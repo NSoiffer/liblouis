@@ -11,25 +11,13 @@ EXTRA_DIST =					\
 	cop-eg.yaml				\
 	cs_harness.yaml				\
 	cs-comp8_harness.yaml			\
-	da-dk-g08_1993.yaml				\
-	da-dk-g08.yaml				\
-	da-dk-g16_1993.yaml				\
-	da-dk-g16.yaml				\
-	da-dk-g16-lit_1993.yaml			\
-	da-dk-g18_1993.yaml				\
-	da-dk-g18.yaml				\
-	da-dk-g26_1993.yaml				\
-	da-dk-g26.yaml				\
+	da-dk_1993.yaml				\
+	da-dk-6dot.yaml				\
+	da-dk-8dot.yaml				\
 	da-dk-g26-dictionary_harness_1993.yaml	\
 	da-dk-g26-dictionary_harness.yaml	\
-	da-dk-g26-lit_1993.yaml			\
-	da-dk-g26l_1993.yaml				\
-	da-dk-g26l-lit_1993.yaml			\
 	da-dk-g28-dictionary_harness_1993.yaml	\
 	da-dk-g28-dictionary_harness.yaml	\
-	da-dk-g28_1993.yaml				\
-	da-dk-g28.yaml				\
-	da-dk-g28l_1993.yaml				\
 	de-comp6.yaml				\
 	de-de-comp8.yaml			\
 	de-eurobrl6.yaml			\
@@ -92,18 +80,15 @@ EXTRA_DIST =					\
 	he-IL.yaml				\
 	hi_harness.yaml				\
 	hr-8dots_harness.yaml			\
-	hu-hu-comp8_backward.yaml		\
 	hu-hu-comp8_harness.yaml		\
-	hu-hu-g1_backward.yaml			\
 	hu-hu-g1_harness.yaml			\
 	hu-hu-g1-hyph_harness.yaml		\
 	hu-hu-g1_braille_input_backward.yaml	\
 	hu-hu-g1_braille_input_forward.yaml	\
-	hu-hu-g1-numbers.yaml			\
-	hu-hu-g1_special_consonants.yaml			\
+	hu-hu-g1_dictionary_numbers.yaml			\
+	hu-hu-g1_dictionary_special_consonants.yaml			\
 	hu-hu-g2_harness.yaml			\
-	hu-hu-g2_backward.yaml			\
-	hu-hu-g2-numbers.yaml			\
+	hu-hu-g2_dictionary_numbers.yaml			\
 	iu-ca-g1_harness.yaml			\
 	ja-kantenji.yaml			\
 	ka.yaml					\
@@ -119,6 +104,7 @@ EXTRA_DIST =					\
 	ml.yaml					\
 	mn-MN_harness.yaml			\
 	ms-my-g2.yaml				\
+	nemeth.yaml				\
 	nl-comp8_harness.yaml			\
 	nl-g0_harness.yaml			\
 	no_8dot_harness.yaml			\

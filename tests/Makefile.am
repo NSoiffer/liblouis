@@ -1,4 +1,4 @@
-SUBDIRS = tables tablesWithMetadata yaml braille-specs ueb_test_data
+SUBDIRS = tables tablesWithMetadata yaml braille-specs ueb_test_data fuzzing
 
 AM_CPPFLAGS =					\
 	-I$(top_srcdir)/liblouis		\
@@ -6,10 +6,6 @@ AM_CPPFLAGS =					\
 	-I$(top_srcdir)/tools			\
 	-I$(top_builddir)/gnulib		\
 	-I$(top_builddir)/tools
-
-if USE_COVERAGE
-AM_CPPFLAGS += -fprofile-instr-generate -fcoverage-mapping
-endif
 
 LDADD =							\
 	$(top_builddir)/liblouis/liblouis.la		\
@@ -82,25 +78,13 @@ dist_braille_specs_TESTS =				  \
 	braille-specs/cop-eg.yaml			  \
 	braille-specs/cs_harness.yaml			  \
 	braille-specs/cs-comp8_harness.yaml		  \
-	braille-specs/da-dk-g08_1993.yaml			  \
-	braille-specs/da-dk-g08.yaml			  \
-	braille-specs/da-dk-g16_1993.yaml			  \
-	braille-specs/da-dk-g16.yaml			  \
-	braille-specs/da-dk-g16-lit_1993.yaml		  \
-	braille-specs/da-dk-g18_1993.yaml			  \
-	braille-specs/da-dk-g18.yaml			  \
-	braille-specs/da-dk-g26_1993.yaml			  \
-	braille-specs/da-dk-g26.yaml			  \
+	braille-specs/da-dk_1993.yaml			  \
+	braille-specs/da-dk-6dot.yaml			  \
+	braille-specs/da-dk-8dot.yaml			  \
 	braille-specs/da-dk-g26-dictionary_harness_1993.yaml	  \
 	braille-specs/da-dk-g26-dictionary_harness.yaml	  \
-	braille-specs/da-dk-g26-lit_1993.yaml		  \
-	braille-specs/da-dk-g26l_1993.yaml			  \
-	braille-specs/da-dk-g26l-lit_1993.yaml		  \
 	braille-specs/da-dk-g28-dictionary_harness_1993.yaml	  \
 	braille-specs/da-dk-g28-dictionary_harness.yaml	  \
-	braille-specs/da-dk-g28_1993.yaml			  \
-	braille-specs/da-dk-g28.yaml			  \
-	braille-specs/da-dk-g28l_1993.yaml			  \
 	braille-specs/de-comp6.yaml			  \
 	braille-specs/de-de-comp8.yaml 			  \
 	braille-specs/de-eurobrl6.yaml			  \
@@ -163,17 +147,14 @@ dist_braille_specs_TESTS =				  \
 	braille-specs/he-IL.yaml			  \
 	braille-specs/hi_harness.yaml			  \
 	braille-specs/hr-8dots_harness.yaml		  \
-	braille-specs/hu-hu-comp8_backward.yaml		  \
 	braille-specs/hu-hu-comp8_harness.yaml		  \
-	braille-specs/hu-hu-g1_backward.yaml		  \
 	braille-specs/hu-hu-g1_harness.yaml		  \
 	braille-specs/hu-hu-g1_braille_input_backward.yaml\
 	braille-specs/hu-hu-g1_braille_input_forward.yaml \
-	braille-specs/hu-hu-g1-numbers.yaml		  \
-	braille-specs/hu-hu-g1_special_consonants.yaml		  \
+	braille-specs/hu-hu-g1_dictionary_numbers.yaml		  \
+	braille-specs/hu-hu-g1_dictionary_special_consonants.yaml		  \
 	braille-specs/hu-hu-g2_harness.yaml 		  \
-	braille-specs/hu-hu-g2_backward.yaml 		  \
-	braille-specs/hu-hu-g2-numbers.yaml		  \
+	braille-specs/hu-hu-g2_dictionary_numbers.yaml		  \
 	braille-specs/iu-ca-g1_harness.yaml		  \
 	braille-specs/ja-kantenji.yaml			  \
 	braille-specs/ka.yaml				  \
@@ -189,6 +170,7 @@ dist_braille_specs_TESTS =				  \
 	braille-specs/ml.yaml				  \
 	braille-specs/mn-MN_harness.yaml		  \
 	braille-specs/ms-my-g2.yaml			  \
+	braille-specs/nemeth.yaml			  \
 	braille-specs/nl-comp8_harness.yaml		  \
 	braille-specs/nl-g0_harness.yaml		  \
 	braille-specs/no_8dot_harness.yaml		  \
@@ -313,14 +295,3 @@ AM_TESTS_ENVIRONMENT =								\
 	WINEPATH=$(top_builddir)/tools						\
 	WINE=$(WINE)								\
 	EXEEXT=$(EXEEXT)
-
-if USE_FUZZER
-fuzzing_fuzz_translate_SOURCES = fuzzing/fuzz_translate.c
-fuzzing_fuzz_translate_LDADD = $(top_builddir)/liblouis/liblouis.la
-fuzzing_fuzz_translate_CFLAGS = \
-	-fsanitize=address,fuzzer,undefined \
-	-fno-omit-frame-pointer \
-	$(AM_CPPFLAGS) 
-	-g -O2
-noinst_PROGRAMS = fuzzing/fuzz_translate
-endif

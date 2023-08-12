@@ -7,7 +7,7 @@
 # containing lists of contractions of our ten local languages. The
 # code is so simple that it actually does not really require any rules
 # in addition to UEB rules:
-# <https://www.liblouis.org/braille-specs/english/ueb/>.
+# <https://liblouis.io/braille-specs/english/ueb/>.
 #
 # Copyright © 2021 by South African Braille Authority
 # <http://www.sabrailleauthority.org.za>
@@ -99,7 +99,7 @@ tests:
   - [bayancokola, ⠣⠡⠝⠉⠕⠅⠕⠱]
   - [baziipesenti, ⠣⠪⠊⠏⠑⠎⠑⠒⠊]
   - [bencwadi, ⠃⠑⠝⠉⠻⠙⠊]
-  - [bephantsi, ⠃⠑⠴⠎, xfail: true]
+  - [bephantsi, ⠃⠑⠴⠎, xfail: {backward: true}]
   - [betshelwa, ⠃⠑⠞⠩⠑⠇⠻]
   - [bezifundo, ⠃⠑⠪⠋⠥⠯⠕]
   - [bhokisi, ⠆⠕⠅⠊⠔]
@@ -173,7 +173,7 @@ tests:
   - [eqale, ⠑⠟⠁⠫]
   - [equlethwe, ⠑⠟⠥⠫⠹⠳]
   - [esezitolo, ⠑⠎⠑⠪⠞⠕⠇⠕]
-  - [esibaluleke, ⠑⠔⠣⠇⠥⠫⠅⠑, xfail: true]
+  - [esibaluleke, ⠑⠔⠣⠇⠥⠫⠅⠑, xfail: {backward: true}]
   - [esibonakalisa, ⠑⠔⠃⠕⠷⠮⠇⠊⠎⠁]
   - [eside, ⠑⠔⠙⠑]
   - [esidluliswayo, ⠑⠔⠙⠇⠥⠇⠊⠎⠻⠽⠕]
