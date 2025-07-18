@@ -27,6 +27,8 @@
  * @brief Translate from braille
  */
 
+#include <config.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -1490,7 +1492,7 @@ back_passDoTest(const TranslationTableHeader *table, int pos, const InString *in
 		if ((!notOperator && !itsTrue) || (notOperator && itsTrue)) return 0;
 		notOperator = 0;
 	}
-	return 1;
+	return 0;
 }
 
 static int

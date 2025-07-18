@@ -29,6 +29,8 @@
  * @brief Translate to braille
  */
 
+#include <config.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -665,6 +667,7 @@ doPassSearch(const TranslationTableHeader *table, const InString *input,
 				if (itsTrue) {
 					for (k = passInstructions[*searchIC + 5];
 							k < passInstructions[*searchIC + 6]; k++) {
+						if (*searchPos >= input->length) return 0;
 						if (input->chars[*searchPos] == LOU_ENDSEGMENT) {
 							itsTrue = 0;
 							break;
@@ -1001,6 +1004,7 @@ passDoAction(const TranslationTableHeader *table, const InString **input,
 		case pass_copy: {
 			int count = destStartReplace - destStartMatch;
 			if (count > 0) {
+				if (destStartReplace + count > output->maxlength) return 0;
 				memmove(&output->chars[destStartMatch], &output->chars[destStartReplace],
 						count * sizeof(*output->chars));
 				output->length -= count;
@@ -3624,6 +3628,7 @@ translateString(const TranslationTableHeader *table, int mode, int currentPass,
 	int repwordStart;
 	int repwordLength;
 	const InString *origInput = input;
+	int warnedForNoTranslate = 0;
 	/* Main translation routine */
 	int k;
 	translation_direction = 1;
@@ -3661,6 +3666,11 @@ translateString(const TranslationTableHeader *table, int mode, int currentPass,
 
 		if (!dontContract) dontContract = typebuf[pos] & no_contract;
 		if (typebuf[pos] & no_translate) {
+			if (!warnedForNoTranslate) {
+				_lou_logMessage(LOU_LOG_WARN,
+						"warning: Typeform no_translate is deprecated for input.");
+				warnedForNoTranslate = 1;
+			}
 			if (input->chars[pos] < 32 || input->chars[pos] > 126) goto failure;
 			widechar d = LOU_DOTS;
 			TranslationTableOffset offset = getChar(input->chars[pos], table)->otherRules;
